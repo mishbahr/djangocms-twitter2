@@ -1,0 +1,83 @@
+{% load cms_tags i18n sekizai_tags staticfiles djangocms_twitter %}
+<div class="twitter-timeline timeline">
+    <div class="timeline-header">
+        <h1 class="summary">
+            <a href="https://twitter.com/intent/user?screen_name={{ instance.get_profile.screen_name }}" title="Tweets from {{ instance.get_profile.name }}">Tweets</a>
+        </h1>
+        {% if instance.follow_button %}
+            <a class="follow-button profile" href="https://twitter.com/intent/follow?screen_name={{ instance.get_profile.screen_name }}" role="button" title="Follow Mishbah Razzaque on Twitter">Follow</a>
+        {% endif %}
+    </div>
+    <div class="stream">
+        <ul class="feed">
+            {% for status in instance.get_tweets %}
+            <li class="entry tweet" data-tweet-id="{{ status.id_str }}">
+                <div class="header">
+                    <a class="url permalink" href="https://twitter.com/{{ status.user.screen_name }}/status/{{ status.id_str }}" target="_blank" title="Time posted: {{ status.created_at|twttr_strptime|date:'SHORT_DATETIME_FORMAT' }} (UTC)">
+                        {{ status.created_at|twttr_strptime|date:"SHORT_DATETIME_FORMAT" }}
+                    </a>
+                    <div class="author">
+                        <a class="url profile" href="https://twitter.com/intent/user?screen_name={{ status.user.screen_name }}">
+                        {% if instance.show_avatar %}
+                            <img class="photo avatar" alt="" src="{{ status.user.profile_image_url }}" data-src-2x="https://pbs.twimg.com/profile_images/2902653616/82f48bed140c58d741ec1e32ca4c8794_bigger.jpeg">
+                        {% endif %}
+                        <span class="name">{{ status.user.name }}</span>
+                        {% if instance.show_username %}
+                            <span class="screen_name">@{{ status.user.screen_name }}</span>
+                        {% endif %}
+                        </a>
+                    </div>
+                </div>
+                <div class="entry-content">
+                    <p class="entry" lang="{{ status.lang }}">
+                        {{ status|urlize_tweet }}
+                    </p>
+                </div>
+                <div class="footer">
+                    <span class="stats">
+                    <a href="https://twitter.com/mishbahrazzaque/status/594083934234882048" target="_blank"
+                        title="View Tweet on Twitter">
+                        <span class="stats-retweets">{{ status.retweet_count }} Retweet{{ status.retweet_count|pluralize }} </span>
+                    </a>
+                    <a href="https://twitter.com/mishbahrazzaque/status/594083934234882048" target="_blank"
+                       title="View Tweet on Twitter">
+                        <span class="stats-favorites">{{ status.favorite_count }} favorite{{ status.favorite_count|pluralize }} </span>
+                    </a>
+                    </span>
+                    <ul class="tweet-actions">
+                        <li><a href="https://twitter.com/intent/tweet?in_reply_to={{ status.id_str }}" class="reply-action web-intent" title="Reply">Reply</a></li>
+                        <li><a href="https://twitter.com/intent/retweet?tweet_id={{ status.id_str }}" class="retweet-action web-intent" title="Retweet">Retweet</a></li>
+                        <li><a href="https://twitter.com/intent/favorite?tweet_id={{ status.id_str }}" class="favorite-action web-intent" title="Favorite">Favorite</a></li>
+                    </ul>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="timeline-footer">
+        <a class="tweet-box-button web-intent" href="https://twitter.com/intent/tweet?screen_name={{ instance.get_profile.screen_name }}">Tweet to @{{ instance.get_profile.screen_name }}</a>
+    </div>
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+    window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));
+</script>
+{% endaddtoblock %}
+
+
