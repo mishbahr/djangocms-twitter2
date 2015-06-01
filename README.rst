@@ -53,7 +53,7 @@ Quickstart
         ...
     )
 
-3. To enable ``Twiiter`` as a provider for ``django-connected``::
+3. To enable ``Twitter`` as a provider for ``django-connected``::
 
     CONNECTED_ACCOUNTS_TWITTER_CONSUMER_KEY = '<twitter_consumer_key>'
     CONNECTED_ACCOUNTS_TWITTER_CONSUMER_SECRET = '<twitter_consumer_secret>'
