@@ -53,12 +53,10 @@ Quickstart
         ...
     )
 
-3. To enable ``Twitter`` as a provider for ``django-connected``::
+3. To enable ``Twitter`` as a provider for ``django-connected`` (you can register an app on Twitter via https://apps.twitter.com/app/new)::
 
     CONNECTED_ACCOUNTS_TWITTER_CONSUMER_KEY = '<twitter_consumer_key>'
     CONNECTED_ACCOUNTS_TWITTER_CONSUMER_SECRET = '<twitter_consumer_secret>'
-
-You can register an app on Twitter via https://apps.twitter.com/app/new
 
 
 4. Sync database (requires south>=1.0.1 if you are using Django 1.6.x)::
