@@ -101,3 +101,10 @@ or override the ``Design`` dropdown choices to have different design options::
         ('djangocms_twitter/default.html', _('Default')),
     )
 
+You may also like...
+--------------------
+
+* djangocms-forms — https://github.com/mishbahr/djangocms-forms
+* djangocms-gmaps — https://github.com/mishbahr/djangocms-gmaps
+* djangocms-instagram — https://github.com/mishbahr/djangocms-instagram
+* djangocms-responsive-wrapper — https://github.com/mishbahr/djangocms-responsive-wrapper
