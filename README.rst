@@ -31,8 +31,7 @@ Preview
 
 Please click on thumbnail for bigger image.
 
-.. image:: http://mishbahr.github.io/djangocms-twitter2/assets/resized/djangocms-twitter2_001.jpeg
-  :target: http://mishbahr.github.io/djangocms-twitter2/assets/djangocms-twitter2_001.png
+.. image:: http://mishbahr.github.io/djangocms-twitter2/assets/djangocms-twitter2_001.png
   :width: 768px
   :align: center
 
