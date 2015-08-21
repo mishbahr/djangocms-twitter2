@@ -107,3 +107,4 @@ You may also like...
 * djangocms-gmaps — https://github.com/mishbahr/djangocms-gmaps
 * djangocms-instagram — https://github.com/mishbahr/djangocms-instagram
 * djangocms-responsive-wrapper — https://github.com/mishbahr/djangocms-responsive-wrapper
+* djangocms-youtube - https://github.com/mishbahr/djangocms-youtube
